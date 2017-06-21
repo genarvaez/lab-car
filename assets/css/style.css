@@ -10,6 +10,9 @@ body{
 h1, h2,h3,h4,h5,h6{
 	color: white;
 }
+a{
+	color: white;
+}
 
 .nav-bar{
 	background-color: #F6F6F6;
@@ -151,12 +154,31 @@ input::-webkit-input-placeholder {
 }
 /*FOOTER*/
 footer{
-	background-color: black;
+	background-color: #2E2E2E;
 	padding: 40px 20px;
+	color: white;
 }
 .title{
 	width: 90%;
 	border-bottom: 1px solid white;
 	margin-left: 70px;
 	padding: 20px 0;
+}
+.links{
+	padding: 20px
+}
+.links li{
+	list-style: none;
+	margin: 10px 0; 
+}
+
+.apps{
+	position: relative;
+	top: 200px;
+}
+.apps img{
+	margin-bottom: 20px;
+}
+.footer{
+	margin-top: 30px;
 }
