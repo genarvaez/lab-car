@@ -14,14 +14,13 @@ function initMap(){
 			navigator.geolocation.getCurrentPosition(funcionExito, funcionError)
 		}
 	}
-
-	document.getElementById("found").addEventListener("click", buscar);
+	window.addEventListener("load", buscar);
+	//document.getElementById("found").addEventListener("click", buscar);
 	var longitud, latitud;
 
 	var funcionExito = function(posicion){
 		latitud = posicion.coords.latitude;
 		longitud = posicion.coords.longitude;
-	
 
 	var miUbicacion = new google.maps.Marker({
 		position: {lat: latitud, lng: longitud},
@@ -35,26 +34,30 @@ function initMap(){
 	var funcionError = function(error){
 		alert("Tenemos problemas para encontrar tu ubicacion")
 	}
-
-	var inputDesde = document.getElementById('desde');
-	var inputHasta = document.getElementById('hasta');
+	//literalmente copie y pegué del ejercicio anterior, pero no funcionó el autocompletado
+	var inputDesde = document.getElementById('inicio');
+	var inputHasta = document.getElementById('fin');
 	var autocomplete = new google.maps.places.Autocomplete(inputDesde);
 	var autocomplete = new google.maps.places.Autocomplete(inputHasta);
 
 	var directionsService = new google.maps.DirectionsService;
 	var directionsDisplay = new google.maps.DirectionsRenderer;
 
+
+
+
 	
 
 
       function calcularRuta(directionsService, directionsDisplay) {
         directionsService.route({
-          origin: document.getElementById('desde').value,
-          destination: document.getElementById('hasta').value,
+          origin: document.getElementById('inicio').value,
+          destination: document.getElementById('fin').value,
           travelMode: 'DRIVING'
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
+            
           } else {
             window.alert('Directions request failed due to ' + status);
           }
@@ -66,7 +69,34 @@ function initMap(){
 	 var trazar = function(){
 	 	calcularRuta(directionsService, directionsDisplay)
 	 };
+	 document.getElementById("found").addEventListener("click", trazar);
+}
 
-	 document.getElementById("route").addEventListener("click", trazar);
 
+//MANIPULANDO CAMBIOS EN RESPONSIVE
+window.addEventListener("resize", cambiarTexto);
+
+function cambiarTexto() {    
+    var width = document.documentElement.clientWidth;
+    
+    if (width < 900 && width > 450){
+      document.getElementById("title-h3").innerHTML = "Viajar con " + '<img src="assets/img/logo-blanco.png" alt="">';
+      document.querySelector(".box-register p").style.display = "none";
+      document.querySelector(".box-register h2").style.display = "none";
+      document.querySelector(".download-info h1").style.display ="none";
+      document.querySelector(".download-info p").style.display ="none";
+    }else if(width < 450){
+      document.getElementById("title-h3").innerHTML = "Viajar con " + '<img src="assets/img/logo-blanco.png" alt="">';
+      document.querySelector(".box-register p").style.display = "none";
+      document.querySelector(".box-register h2").style.display = "none";
+      document.querySelector(".download-info h1").style.display ="none";
+      document.querySelector(".download-info p").style.display ="none";
+    }
+    else{
+    	document.querySelector(".box-register p").style.display = "block";
+    	document.querySelector(".box-register h2").style.display = "block";
+    	document.querySelector(".download-info h1").style.display ="block";
+      	document.querySelector(".download-info p").style.display ="block";
+    	
+    }
 }

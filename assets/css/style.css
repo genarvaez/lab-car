@@ -62,10 +62,10 @@ a{
 	color: black;
 	border-radius: 5px;
 	background-color: white;
-	width: 300px;
+	width: 70%;
 	height: 50px;
 	font-size: 1.3em;
-	margin: 10px;
+	margin: 10px 0;
 }
 /*DOWNLOAD SECTION*/
 .download-box{
@@ -182,3 +182,16 @@ footer{
 .footer{
 	margin-top: 30px;
 }
+#texto:before{
+  content: "Conviértete en un conductor";
+}
+.box-register h1:before{
+    	content: "Disfruta del viaje";
+}
+.download-info h4{
+	margin-bottom: 40px;
+}
+.download-info h4:before{
+	content: "";
+}
+

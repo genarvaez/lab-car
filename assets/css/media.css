@@ -1,0 +1,42 @@
+@media (max-width:900px) and (min-width:320px) {
+    #texto:before {
+        content: "Descarga el app";
+    }
+    .box-register{
+    	top: 90px;
+    }
+    .box-register h1:before{
+    	content: "Comienza a";
+    }
+
+    .box-register p, .box-register input, .box-register span{
+    	display:none;
+    }
+    .input button{
+    	width: 
+    }
+    .download-box{
+    	margin: 20px;
+    	border: 2px solid white;
+    }
+   .download-info h4:before{
+   	content: "Llega a tu destino aún mas rápido";
+   }
+   .drive-info{
+   	padding: 30px;
+   }
+   .tarifa-info{
+   	margin: 30px 0;
+   }
+   .map-box{
+   	display: none
+   }
+   .noShow{
+   	display: none
+   }
+   .apps{
+   	position: static;
+   	margin-top: 30px;
+   }
+
+}
