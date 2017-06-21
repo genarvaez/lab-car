@@ -4,6 +4,9 @@
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
 }
+body{
+	background-color: #FFBF00;
+}
 
 .nav-bar{
 	background-color: #F6F6F6;
@@ -26,7 +29,7 @@
 	font-size: 1.2em;
 	margin-right: 30px;
 }
-
+/*REGISTER BOX*/
 .box-register{
 	background-color: #FFBF00;
 	color: white;
@@ -57,4 +60,45 @@
 	height: 50px;
 	font-size: 1.3em;
 	margin: 10px;
+}
+/*DOWNLOAD SECTION*/
+.download-box{
+	border: 1px solid white;
+	border-left: none;
+	margin: 30px 30px 30px -20px;
+	padding: 30px;
+}
+.download-info{
+	color: white;
+	margin-top: 20px;
+}
+.download-info p{
+	font-size: 1.5em;
+	padding: 10px 70px 10px 0;
+	text-align: justify;
+}
+/*DRIVE SECTION*/
+.drive{
+	background: url('../img/conduce.jpg');
+	background-size: cover;
+	background-position: center center;
+
+}
+.drive-info{
+	padding: 80px 30px;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 60vh;
+	margin-right: -10px;
+	color: white;
+}
+.drive-info p{
+	font-size: 1.5em
+}
+.drive-info button{
+	background-color: #FFBF00;
+	border: none;
+	border-radius: 5px;
+	height: 40px;
+	width: 300px;
+	font-size: 1.5em;
 }
