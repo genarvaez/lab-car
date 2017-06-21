@@ -1,0 +1,45 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.nav-bar{
+	background-color: #F6F6F6;
+	padding: 30px;
+}
+.home{
+	background: url('..//img/taxi.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+	background-position: center bottom
+}
+.navbar-brand>img{
+	margin-left: 75px;
+	position: relative;
+	bottom: 10px;
+}
+.navbar-default .navbar-nav>li>a{
+	color: black;
+	font-size: 1.2em;
+	margin-right: 30px;
+}
+
+.box-register{
+	background-color: #FFBF00;
+	color: white;
+}
+.input{
+	display: inline-block;
+}
+.input input{
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid white;
+	margin: 10px auto;
+	width: 150px;
+}
+.input span{
+	margin: auto 60px;
+}
