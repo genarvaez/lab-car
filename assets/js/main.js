@@ -1,6 +1,8 @@
-
+var inputDesde = document.getElementById('inicio');
+var inputHasta = document.getElementById('fin');
 
 function initMap(){
+	 var geocoder = new google.maps.Geocoder();
 	var map = new google.maps.Map(document.getElementById("map"), {
 		zoom:12,
 		center: {lat: -33.4488897, lng: -70.6692655},
@@ -9,13 +11,18 @@ function initMap(){
 		streetViewControl: false,
 	});
 	
+
+	 var source = document.getElementById("inicio").value;
+     var destination = document.getElementById("fin").value;
+
+ 
+
 	function buscar(){
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(funcionExito, funcionError)
 		}
 	}
-	window.addEventListener("load", buscar);
-	//document.getElementById("found").addEventListener("click", buscar);
+	//window.addEventListener("load", buscar);
 	var longitud, latitud;
 
 	var funcionExito = function(posicion){
@@ -26,6 +33,7 @@ function initMap(){
 		position: {lat: latitud, lng: longitud},
 		animation: google.maps.Animation.DROP, 
 		map: map,
+		draggable: true
 	});
 
 	map.setZoom(17);
@@ -34,9 +42,8 @@ function initMap(){
 	var funcionError = function(error){
 		alert("Tenemos problemas para encontrar tu ubicacion")
 	}
-	//literalmente copie y pegué del ejercicio anterior, pero no funcionó el autocompletado
-	var inputDesde = document.getElementById('inicio');
-	var inputHasta = document.getElementById('fin');
+	
+	
 	var autocomplete = new google.maps.places.Autocomplete(inputDesde);
 	var autocomplete = new google.maps.places.Autocomplete(inputHasta);
 
@@ -44,9 +51,41 @@ function initMap(){
 	var directionsDisplay = new google.maps.DirectionsRenderer;
 
 
+/* INTENDO DE CALCULO DE DISTANCIA
+	function calculateDistance()
+    {
+      
+            var glatlng1 = new GLatLng(location1.lat, location1.lon);
+            var glatlng2 = new GLatLng(location2.lat, location2.lon);
+            var miledistance = glatlng1.distanceFrom(glatlng2, 3959).toFixed(1);
+            var kmdistance = (miledistance * 1.609344).toFixed(1);
+            alert('Address 1: ' + location1.address + ' (' + location1.lat + ':' + 
+            	location1.lon + ')<br />Address 2: ' + location2.address + ' (' + location2.lat + ':' 
+            	+ location2.lon + ')<br />Distance: ' + miledistance + ' miles (or ' + kmdistance 
+            	+ ' kilometers)<br/>');
+         }
 
 
-	
+
+    geocoder.getLocations(document.forms[0].inputDesde.value, function (response) {
+        if (!response || response.Status.code != 200) {
+            alert("Sorry, your start addess is required");
+        } 
+        else{
+	        location1 = {lat: response.Placemark[0].Point.coordinates[1], lon: response.Placemark[0].Point.coordinates[0], address: response.Placemark[0].address};
+            geocoder.getLocations(document.forms[0].inputHasta.value, function (response) {
+            if (!response || response.Status.code != 200) {
+                alert("Sorry, your end address is required");
+            } 
+            else{
+	            location2 = {lat: response.Placemark[0].Point.coordinates[1], lon: response.Placemark[0].Point.coordinates[0], address: response.Placemark[0].address};
+                calculateDistance();
+            }
+                });
+            }
+        });
+   
+*/ 
 
 
       function calcularRuta(directionsService, directionsDisplay) {
@@ -57,7 +96,7 @@ function initMap(){
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
-            
+
           } else {
             window.alert('Directions request failed due to ' + status);
           }
@@ -70,6 +109,14 @@ function initMap(){
 	 	calcularRuta(directionsService, directionsDisplay)
 	 };
 	 document.getElementById("found").addEventListener("click", trazar);
+
+	 window.addEventListener('scroll', function (e) {
+	 	if( document.body.scrollTop > 1550){
+            buscar()
+        }
+       })
+    
+        
 }
 
 
