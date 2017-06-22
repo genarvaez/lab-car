@@ -22,7 +22,7 @@ function initMap(){
 			navigator.geolocation.getCurrentPosition(funcionExito, funcionError)
 		}
 	}
-	//window.addEventListener("load", buscar);
+	window.addEventListener("load", buscar);
 	var longitud, latitud;
 
 	var funcionExito = function(posicion){
@@ -109,12 +109,6 @@ function initMap(){
 	 	calcularRuta(directionsService, directionsDisplay)
 	 };
 	 document.getElementById("found").addEventListener("click", trazar);
-
-	 window.addEventListener('scroll', function (e) {
-	 	if( document.body.scrollTop > 1550){
-            buscar()
-        }
-       })
     
         
 }
